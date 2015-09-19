@@ -1,0 +1,221 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Data Processing and Validation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../_/css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="../_/css/assets/css/custom.min.css">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../_/js/bootstrap.min.js"></script>
+    <script src="../_/js/custom.js"></script>
+	<script src="../_/js/jquery-1.11.3.min.js"></script>
+    <script src="../_/js/parsley.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../index.html" class="navbar-brand">JavaScript Seminar</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+               <a href="../processing/index.html">Data Processing</a>
+            </li>
+            <li>
+              <a href="../validation/index.html">Data Validation</a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li> <a href="#">About</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+<!-- end bar-->
+	<div class="panel panel-primary" style="margin:4%;">
+		<div class="panel-heading">
+		  <h3 class="panel-title" style="font-size:1.3em;">Data Validation</h3>
+		</div>
+		<div class="panel-body">
+		<!-- Nav Bar Start -->
+		<div class="bs-component">
+              <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                      <li><a href="index.html">JavaScript API</a></li>
+                     <li class="active"><a href="parsleyJS.html">Parsley.js <span class="sr-only">(current)</span></a></li>
+					  <li><a href="verifyjs.html">Verify.js</a></li>
+					 <li><a href="validateJS.html">Validate.js</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+			
+			<!-- Nav Bar End -->
+			  <h3>Parsley.js Framework validation:</h3>
+			 <div class="row">
+			  <div class="col-lg-5">
+			  <div class="bs-component">
+			  <div class="alert alert-dismissible alert-info" style="font-weight:bold;">Relies on jQuery (>= 1.8)</br>
+			  </br>Localization: Comes with various error messages for its built-in validators(multiple languages available)
+			 </div>
+			 </div>
+			 <div class="well bs-component">
+				<form id="demo-form" class="form-horizontal" data-parsley-validate>
+					<fieldset>
+				  <div class="form-group">
+                    <label for="fullname" class="col-lg-4 control-label">Name</label>
+                    <div class="col-lg-8">
+                      <input type="text" class="form-control" name="fullname" placeholder="This field is required" required>
+                    </div>
+                  </div>
+				  <div class="form-group">
+                    <label for="email" class="col-lg-4 control-label">Email</label>
+                    <div class="col-lg-8">
+                      <input type="email" class="form-control" name="email" placeholder="This EMAIL is required" data-parsley-trigger="change" required>
+                    </div>
+                  </div>
+				  <div class="form-group">
+                    <label for="gender" class="col-lg-4 control-label">Gender</label>
+                    <div class="col-lg-8">
+						<div class="radio">
+							<label>
+							  <input type="radio" name="gender" id="genderM" value="M" required>
+							  M
+							</label>
+						  </div>
+						  <div class="radio">
+							<label>
+							  <input type="radio" name="gender" id="genderF" value="F">
+							  F
+							</label>
+						  </div>
+                    </div>
+                  </div>
+				 <div class="form-group">
+                    <label for="optionalBoxes" class="col-lg-4 control-label">(Optional, but 2 minimum):</label>
+                    <div class="col-lg-8">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionalBoxes" value="ski" data-parsley-mincheck="2"/> Option1
+                        </label>
+                      </div>
+					  <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionalBoxes" value="run" data-parsley-mincheck="2"/> Option2
+                        </label>
+                      </div>
+					  <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionalBoxes" value="eat" data-parsley-mincheck="2"/> Option3
+                        </label>
+                      </div>
+					  <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionalBoxes" value="code" data-parsley-mincheck="2"/> Option4
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+				  <div class="form-group">
+                    <label for="message" class="col-lg-4 control-label">(Min 10 - Max 50) :</label>
+                    <div class="col-lg-8">
+                      <textarea type="text" class="form-control" name="10 chars min, 50 max" placeholder="Required min 10 and max 50 chars" data-parsley-trigger="change" 
+					  data-parsley-validation-threshold="10" data-parsley-trigger="keyup" data-parsley-minlength="10" data-parsley-maxlength="50"
+					  data-parsley-minlength-message = "Minimum 10 Characters" required></textarea>
+                    </div>
+                  </div>
+				  
+				  <div class="form-group">
+                    <label for="range" class="col-lg-4 control-label">[4, 20] Value:</label>
+                    <div class="col-lg-8">
+					 <input type="text" class="form-control" name="range" data-parsley-trigger="change" 
+					 data-parsley-range="[4, 20]" required placeholder="Required value between 4 and 20"/>
+                    </div>
+                  </div>
+			
+			<div class="form-group">
+				<label for="question"  class="col-lg-4 control-label">Choose 'Yes' for custom Validation</label>
+				   <div class="col-lg-8">
+				   <div class="radio">
+					<input type="radio" name="question1" value="yes" required /> Yes
+					</div>
+					 <div class="radio">
+					<input type="radio" name="question1" value="no" /> No
+					</div>
+				  </div>
+			</div>
+			 <div class="form-group">
+			  <label for="languages" class="col-lg-4 control-label">If yes, This field is required!</label>
+			  <div class="col-lg-8">
+			  <input type="text" class="form-control" name="languages" data-parsley-trigger="change" data-parsley-conditionalrequired='["[name=\"question1\"]:checked", "yes"]' data-parsley-validate-if-empty data-parsley-success-class=""data-parsley-conditionalrequired-message="This value is required since you have selected 'Yes'" />
+			  
+			  <script type="text/javascript">
+			  window.ParsleyConfig = {
+				validators: {
+				  conditionalrequired: {
+					fn: function (value, requirements) {
+					  // if requirements[0] value does not meet requirements[1] expectation, field is required
+					  if (requirements[1] == $(requirements[0]).val() && '' == value)
+					  return false;
+
+					  return true;
+					},
+					priority: 32
+				  }
+				}
+			  };
+			</script>
+			</div>
+			</div>
+			  <div class="form-group">
+				<div class="col-lg-10 col-lg-offset-4">
+				   <input type="submit" class="btn btn-primary"/>
+				</div>
+			  </div>
+			  </fieldset>
+			</form>
+			</div>
+			  </div>
+			  <div class="bs-component col-lg-3">
+				  <div class="alert alert-dismissible alert-info" style="font-weight:bold;">
+					Form Definition:</br><span style="font-weight:bold; color:yellow;">< form data-parsley-validate></span></br></br>Definition using JQuery:</br><span style="font-weight:bold; color:yellow;">$('#form').parsley();</br></span></br>
+					Trigger validation on change:</br><span style="font-weight:bold; color:yellow;">data-parsley-trigger="change" </br></span></br>
+					Trigger validation on Keyup:</br><span style="font-weight:bold; color:yellow;">data-parsley-trigger="keyup"</br></span></br>
+					Group minimum selection:</br><span style="font-weight:bold; color:yellow;">data-parsley-mincheck="2"</br></span></br>
+					Maximum length:</br><span style="font-weight:bold; color:yellow;">data-parsley-maxlength="50"</br></span></br>
+					Minimum length:</br><span style="font-weight:bold; color:yellow;">data-parsley-minlength="10"</br></span></br>
+					Value Range:</br><span style="font-weight:bold; color:yellow;">data-parsley-range="[4, 20]"</br></span></br>
+				  </div>
+			   </div>
+			  </div>
+            </div>
+		</div>
+	</div>
+<!-- start footer -->   
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="list-unstyled">
+              <li class="pull-right"><a href="#top">Back to top</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </footer>
+
+
+    </div>
+</body>
+</html>

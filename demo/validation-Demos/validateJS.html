@@ -1,0 +1,184 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Data Processing and Validation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../_/css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="../_/css/assets/css/custom.min.css">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../_/js/bootstrap.min.js"></script>
+    <script src="../_/js/custom.js"></script>
+    <script src="../_/js/validate.min.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../index.html" class="navbar-brand">JavaScript Seminar</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+               <a href="../processing/index.html">Data Processing</a>
+            </li>
+            <li>
+              <a href="../validation/index.html">Data Validation</a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li> <a href="#">About</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+<!-- end bar-->
+	<div class="panel panel-primary" style="margin:4%;">
+		<div class="panel-heading">
+		  <h3 class="panel-title" style="font-size:1.3em;">Data Validation</h3>
+		</div>
+		<div class="panel-body">
+		<!-- Nav Bar Start -->
+		<div class="bs-component">
+              <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                      <li><a href="index.html">JavaScript API</a></li>
+                      <li><a href="parsleyJS.html">Parsley.js</a></li>
+					  <li><a href="verifyjs.html">Verify.js</a></li>
+					 <li class="active"><a href="validateJS.html">Validate.js</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+			
+			<!-- Nav Bar End -->
+			  <h3>Validate.js Framework validation:</h3>
+			 <div class="row">
+			  <div class="col-lg-5">
+			  <div class="bs-component">
+			  <div class="alert alert-dismissible alert-info" style="font-weight:bold;">DOES NOT Rely on jQuery</br></br>No dependencies!
+			  </div>
+			 </div>
+			 <div class="well bs-component">
+				<form name="example_form" class="form-horizontal">
+					<fieldset>
+				  <div class="form-group">
+                    <div class="col-lg-12">
+					  <label for="gender" class="control-label">Required</label>
+					  <input name="req" placeholder="This is a required field" class="form-control"/>
+                      </br>
+					  <label for="gender" class="control-label">Alphanumeric</label>
+					   <input name="alphanumeric" placeholder="This field an alphanumeric field" class="form-control"/>
+                      </br>
+					  <label for="gender" class="control-label">Password</label>
+					   <input name="password" type="password" placeholder="This is a password field" class="form-control"/>
+                      </br>
+					  <label for="gender" class="control-label">Password Confirmation</label>
+					   <input name="password_confirm" type="password" placeholder="This a password confirmation field" class="form-control"/>
+                      </br>
+					  <label for="gender" class="control-label">Email</label>
+					   <input name="email" placeholder="This is an email field" class="form-control"/>
+                      </br>
+					  <label for="gender" class="control-label">Minimum 8 Chars</label>
+					   <input name="minlength" placeholder="this field must contain at least 8 chars" class="form-control"/>
+                      </br>
+                    </div>
+                  </div>
+			  <div class="form-group">
+				<div class="col-lg-10 col-lg-offset-9">
+				   <input type="submit" class="btn btn-primary"/>
+				</div>
+			  </div>
+			  </fieldset>
+			</form>
+			</div>
+			  </div>
+			  <div class="bs-component col-lg-3">
+				  <div class="bs-component">
+				  <div id="errorsBox" class="alert alert-dismissible alert-danger" style="font-weight:bold;">
+				  The required field is required.
+				  The password field is required.
+				  The password confirmation field is required.
+				  </div>
+				 </div>
+				  <div class="alert alert-dismissible alert-info" style="font-weight:bold;">
+					Form Definition:</br><span style="font-weight:bold; color:yellow;">< form></span></br></br>Verify using JQuery:</br><span style="font-weight:bold; color:yellow;">$("form").verify();</br></span></br>
+					Field is REQUIRED and NUMBER:</br><span style="font-weight:bold; color:yellow;">data-validate="required,number"</br></span></br>
+					Field is for Currency:</br><span style="font-weight:bold; color:yellow;">data-validate="currency"</br></span></br>
+					Verify field using RegEx</br><span style="font-weight:bold; color:yellow;">data-validate="regex({Exp},{errorMsg})"</br></span></br>
+					Verify using Custom Function</br><span style="font-weight:bold; color:yellow;">data-validate="customFunction"</br></span></br>
+					Start Date Field</br><span style="font-weight:bold; color:yellow;">data-validate= "date,dateRange#start"</br></span></br>
+					End Date Field</br><span style="font-weight:bold; color:yellow;">data-validate= "date,dateRange#end"</br></span></br>
+				  </div>
+			   </div>
+			  </div>
+            </div>
+		</div>
+	</div>
+<!-- start footer -->   
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="list-unstyled">
+              <li class="pull-right"><a href="#top">Back to top</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </footer>
+
+
+    </div>
+<script type="text/javascript">
+	 var validator = new FormValidator('example_form', [{
+			name: 'req',
+			display: 'required',
+			rules: 'required'
+		}, {
+			name: 'alphanumeric',
+			rules: 'alpha_numeric'
+		}, {
+			name: 'password',
+			rules: 'required'
+		}, {
+			name: 'password_confirm',
+			display: 'password confirmation',
+			rules: 'required|matches[password]'
+		}, {
+			name: 'email',
+			rules: 'valid_email',
+			depends: function() {
+				return Math.random() > .5;
+			}
+		}, {
+			name: 'minlength',
+			display: 'min length',
+			rules: 'min_length[8]'
+		}], function(errors, event) {
+			if (errors.length > 0) {
+				var errorString = '';
+
+				for (var i = 0, errorLength = errors.length; i < errorLength; i++) {
+					errorString += errors[i].message + '<br />';
+				}
+
+				document.getElementById("errorsBox").innerHTML = errorString;
+			}
+			else
+			{
+				document.getElementById("errorsBox").innerHTML = "Your Input is Valid";
+			}
+		});
+	 </script>
+</body>
+</html>

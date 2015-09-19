@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>JavaScript Seminar - Get Connected</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="#"><span style="color:green;">GET</span> Connected</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#about" style="visibility:hidden;">Home</a>
+                    </li>
+                    <li>
+                        <a href="#register">Register</a>
+                    </li>
+                    <li>
+                        <a href="#login">Log In</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1><span style="color:green;">GET</span> Connected</h1>
+                        <h3><i>Join the world's most popular professional network</i></h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="#register" class="btn btn-default btn-lg" style="background-color: green; color:white; font-weight:bold;"><span class="network-name">Register Now!</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+
+	<a  name="register"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Register new user:</h2>
+                     <div class="well bs-component">
+					<form id="demo-form" class="form-horizontal" data-parsley-validate>
+						<fieldset>
+						
+					  <div class="form-group">
+						<label for="fullname" class="col-lg-2 control-label">Full Name</label>
+						<div class="col-lg-8">
+						  <input type="text" class="form-control" name="fullname" placeholder="Please enter you full name" required>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="username" class="col-lg-2 control-label">Username</label>
+						<div class="col-lg-8">
+						  <input type="text" class="form-control" name="username" data-parsley-pattern="/^[A-Za-z0-9 ]{3,20}$/" placeholder="Alphabets, numbers and space(' ') no special characters min 3 and max 20 characters" required>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="password" class="col-lg-2 control-label">Password</label>
+						<div class="col-lg-8">
+						  <input type="password" class="form-control" name="password1" placeholder="This field is required" parsley-required="true">
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="passwordConfirm" class="col-lg-2 control-label">Confirm Password</label>
+						<div class="col-lg-8">
+						  <input type="password" class="form-control" name="passwordConfirm" placeholder="This value must match the 'Password' field" 
+						   data-parsley-equalto="#password1" parsley-required="true">
+						</div>
+					  </div>
+					  
+					   <div class="form-group">
+						<label for="birthdate" class="col-lg-2 control-label">Birthdate</label>
+						<div class="col-lg-8">
+						  <input type="date" class="form-control" name="birthdate" placeholder="dd.MM.yyyy" required>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="gender" class="col-lg-2 control-label">Gender</label>
+						<div class="col-lg-8">
+						  <div class="col-lg-8">
+						<div class="radio">
+							<label>
+							  <input type="radio" name="gender" id="genderM" value="M" required>
+							  M
+							</label>
+						  </div>
+						  <div class="radio">
+							<label>
+							  <input type="radio" name="gender" id="genderF" value="F">
+							  F
+							</label>
+						  </div>
+                    </div>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="country" class="col-lg-2 control-label">Country</label>
+						<div class="col-lg-8">
+						  <input type="text" class="form-control" name="country" placeholder="This field is required" required>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="rescue" class="col-lg-2 control-label">Rescue Email</label>
+						<div class="col-lg-8">
+						  <input type="email" class="form-control" name="rescue" placeholder="A valid email address" required>
+						</div>
+					  </div>
+					  
+					   <div class="form-group">
+						<label for="cvArea" class="col-lg-2 control-label">C.V</label>
+						<div class="col-lg-8">
+						   <input style="padding-left:14px;" type="file" onchange="readCV(this);" accept=".txt"/></br>
+						  <textarea rows="4" class="form-control col-lg-6" id="cvArea" name="cvArea" placeholder="This field is required" required> </textarea>
+							<script>
+							function readCV(input) {
+								if (input.files && input.files[0]) {
+									var reader = new FileReader();
+
+									reader.onload = function (e) {
+									
+										$('#cvArea').val(e.target.result);
+									};
+
+									reader.readAsText(input.files[0]);
+								}
+							}
+						  </script>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="rescue" class="col-lg-2 control-label">Picture</label>
+						<div>
+						  <img id="profilePic" style="width:250px; height:250px;" class="img-responsive col-lg-4" src="img/profile.png" alt="">
+						  <input style="padding-left:14px;" type="file" onchange="readURL(this);" accept=".jpg"/>
+						  <script>
+							function readURL(input) {
+								if (input.files && input.files[0]) {
+									var reader = new FileReader();
+
+									reader.onload = function (e) {
+										$('#profilePic')
+											.attr('src', e.target.result)
+											.width(250).height(250);
+									};
+
+									reader.readAsDataURL(input.files[0]);
+								}
+							}
+						  </script>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<div class="col-lg-8 col-lg-offset-2">
+						   <input type="submit" class="btn btn-primary" value="Register"/>
+						</div>
+					  </div>
+					  </fieldset>
+					</form>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+
+    </div>
+    
+	<a  name="login"></a>
+	<div class="content-section-a">
+		 <div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<hr class="section-heading-spacer">
+					<div class="clearfix"></div>
+					<h2 class="section-heading">Welcome Back,</br>Log In</h2>
+					 <div class="well bs-component">
+					<form id="demo-form" class="form-horizontal" data-parsley-validate>
+						<fieldset>
+					 
+					  <div class="form-group">
+					  </br></br></br></br>
+						<label for="username" class="col-lg-2 control-label">Username</label>
+						<div class="col-lg-8">
+						  <input type="text" class="form-control" name="username" placeholder="This field is required" required>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="password" class="col-lg-2 control-label">Password</label>
+						<div class="col-lg-8">
+						  <input type="text" class="form-control" name="password" placeholder="This field is required" required>
+						</div>
+					  </div>
+					 
+					  
+					  <div class="form-group">
+						<div class="col-lg-8 col-lg-offset-2">
+						   <input type="submit" class="btn btn-primary" value="Login"/>
+						</div>
+						</br></br></br>
+					  </div>
+					  </fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.container -->
+
+	</div>
+    <!-- /.banner -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#register">Register</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#login">Login</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; JavaScript Seminar 2015. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+	
+	<!-- Parsley.js -->
+    <script src="js/parsley.js"></script>
+
+</body>
+
+</html>

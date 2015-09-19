@@ -1,0 +1,269 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Data Processing and Validation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../_/css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="../_/css/assets/css/custom.min.css">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../_/js/bootstrap.min.js"></script>
+    <script src="../_/js/custom.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../index.html" class="navbar-brand">JavaScript Seminar</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+               <a href="../processing/index.html">Data Processing</a>
+            </li>
+            <li>
+              <a href="../validation/index.html">Data Validation</a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li> <a href="#">About</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+<!-- end bar-->
+	<div class="panel panel-primary" style="margin:4%;">
+		<div class="panel-heading">
+		  <h3 class="panel-title" style="font-size:1.3em;">Data Validation</h3>
+		</div>
+		<div class="panel-body">
+		<!-- Nav Bar Start -->
+		<div class="bs-component">
+              <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                     <li class="active"><a href="index.html">JavaScript API <span class="sr-only">(current)</span></a></li>
+                     <li><a href="parsleyJS.html">Parsley.js</a></li>
+					  <li><a href="verifyJS.html">Verify.js</a></li>
+					 <li><a href="validateJS.html">Validate.js</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+			
+			<!-- Nav Bar End -->
+			  <!-- Methods and Properties -->
+			<h3>Methods & Properties:</h3></br>
+			 <div class="row">
+			 <div class="bs-component col-lg-5">
+			  <div class="alert alert-dismissible alert-info">
+			  <span style="font-weight:bold; color:yellow;">< input type="number" min="100" max="300"></span></br></br>
+				<strong>Method: </strong>checkValidity()</br> <strong>Properties: </strong>validity, validationMessage, willValidate
+			  </div>
+				<div id="propertiesformGroupDiv" class="form-group">
+				  <div style="float:left; width:255px;"><input type="number" class="form-control" 
+				  id="propertiesInputDefault" min="100" max="300" placeholder="Number between 100 and 300"></div>
+				  <div><button class="btn btn-primary" style="margin-left:10px;" onclick="myFunction()">Validate</button></div>
+				</div>
+				<script>
+				function myFunction() {
+					var inpObj = document.getElementById("propertiesInputDefault");
+					
+					document.getElementById("checkValiditySpan").innerHTML = inpObj.checkValidity();
+					document.getElementById("willValidateSpan").innerHTML = inpObj.willValidate;
+					document.getElementById("validationMessageSpan").innerHTML = inpObj.validationMessage;
+					
+					document.getElementById("rangeOverflowSpan").innerHTML = inpObj.validity.rangeOverflow;
+					document.getElementById("rangeUnderflowSpan").innerHTML = inpObj.validity.rangeUnderflow;
+					
+					
+					if (inpObj.checkValidity() == false) {
+						document.getElementById("propertiesValidationBox").className = "alert alert-dismissible alert-danger";
+						document.getElementById("propertiesformGroupDiv").className = "form-group has-error";
+					} else {
+						document.getElementById("propertiesValidationBox").className = "alert alert-dismissible alert-success";
+						document.getElementById("propertiesformGroupDiv").className = "form-group has-success";
+					} 
+				} 
+				</script>
+			 </div>
+			 <div class="bs-component col-lg-3">
+				  <div id="propertiesValidationBox" class="alert alert-dismissible alert-success">
+					<strong>CheckValidity(): </strong><span id="checkValiditySpan"></span></br>
+					<strong>validity: </strong>
+					<div class="bs-component">
+					  <table class="table">
+						<thead>
+						  <tr>
+							<th>Property</th>
+							<th>Value</th>
+						  </tr>
+						</thead>
+						<tbody>
+						 <tr>
+							<td>rangeOverflow</td>
+							<td><span id="rangeOverflowSpan"></span></td>
+						  </tr>
+						  <tr>
+							<td>rangeUnderflow</td>
+							<td><span id="rangeUnderflowSpan"></span></td>
+						  </tr>
+						</tbody>
+					  </table> 
+					</div>
+					
+					<strong>validationMessage: </strong><span id="validationMessageSpan"></span></br>
+					<strong>willValidate: </strong><span id="willValidateSpan"></span>
+				  </div>
+				</div>
+			 </div>
+			  <div class="progress">
+				<div class="progress-bar" style="width: 100%"></div>
+			  </div>
+			 <!-- JS API Forms-->
+			 <h3>Forms:</h3>
+			 <div class="row">
+			  <div class="col-lg-5">
+			  <div class="bs-component">
+			  <div class="alert alert-dismissible alert-info">
+			  <span style="font-weight:bold; color:yellow;">< form onsubmit="return validateForm()" method="post"></br>< input type="text"></span></br></br>
+				<strong>Validation Trigger: </strong>On Submit
+			  </div>
+			 </div>
+				<form name="myForm" action="" class="form-horizontal" onsubmit="return validateForm()" method="post">
+					<fieldset>
+					
+					<div id="formsFormGroupDiv" class="form-group has-error">
+						<div style="float:left; margin-left:10px;">
+						  <input type="text" class="form-control" name="fname" placeholder="This field is required" style="width:255px;">
+						</div>
+						<div>
+						  <button type="submit" class="btn btn-primary" value="Submit" style="margin-left:10px;">Submit</button>
+						</div>
+					 </div>
+					</fieldset>
+				</form>
+				<script>
+				function validateForm() {
+					var x = document.forms["myForm"]["fname"].value;
+					if (x == null || x == "") 
+					{
+						document.getElementById("formsValidationBox").className = "alert alert-dismissible alert-danger";
+						document.getElementById("formsFormGroupDiv").className = "form-group has-error";
+						document.getElementById("formsValidationBox").innerHTML = "Please fill required field";
+						return false;
+					}
+					else
+					{
+						document.getElementById("formsValidationBox").className = "alert alert-dismissible alert-success";
+						document.getElementById("formsFormGroupDiv").className = "form-group has-success";
+						document.getElementById("formsValidationBox").innerHTML = "The field is valid";
+					}
+				}
+				</script>
+			  </div>
+			  <div class="bs-component col-lg-3">
+				  <div id="formsValidationBox" class="alert alert-dismissible alert-danger">
+					Please fill required field
+				  </div>
+			   </div>
+			  </div>
+			  <div class="progress">
+				<div class="progress-bar" style="width: 100%"></div>
+			  </div>
+			  <!-- HTML5-->
+			 <h3>HTML browser validation:</h3>
+			 <div class="row">
+			  <div class="col-lg-5">
+			  <div class="bs-component">
+			  <div class="alert alert-dismissible alert-info">
+			  <span style="font-weight:bold; color:yellow;">< input type="text" required></span></br></br>
+				<strong>Validation is processed automatically by the browser "On Submit"</strong>
+			  </div>
+			 </div>
+				<form name="myForm" action="" class="form-horizontal" method="post">
+				   <fieldset>
+					<div id="formsFormGroupDiv" class="form-group has-error">
+						<div style="float:left; margin-left:10px;">
+						  <input type="text" class="form-control" placeholder="This field is required" style="width:255px;" required>
+						</div>
+						<div>
+						  <button type="submit" class="btn btn-primary" value="Submit" style="margin-left:10px;">Submit</button>
+						</div>
+					 </div>
+					</fieldset>
+				</form>
+			  </div>
+			  </div>
+			   <div class="progress">
+				<div class="progress-bar" style="width: 100%"></div>
+			  </div>
+			   <!-- RegEx-->
+			  <h3>JS Validation using Regular Expressions:</h3>
+			 <div class="row">
+			  <div class="col-lg-5">
+			  <div class="bs-component">
+			  <div class="alert alert-dismissible alert-info">
+			  <span style="font-weight:bold; color:yellow;">RegEx:/^[A-Za-z0-9 ]{3,20}$/;</span></br>
+			  Alphabets, numbers and space(' ') no special characters min 3 and max 20 characters</br>
+				<strong>Validation Trigger: </strong>On Submit
+			  </div>
+			 </div>
+			 <div id="regexformGroupDiv" class="form-group has-error">
+			  <div style="float:left; width:255px;"><input type="text" class="form-control" 
+			  id="regexInputDefault" placeholder="Min 3 characters"></div>
+			  <div><button class="btn btn-primary" style="margin-left:10px;" onclick="regexMyFunction()">Validate</button></div>
+			</div>
+			<script>
+			function regexMyFunction() {
+				var inpObj = document.getElementById("regexInputDefault");
+				
+				var ck_name = /^[A-Za-z0-9 ]{3,20}$/; 
+				if (!ck_name.test(inpObj.value)) 
+				{
+					document.getElementById("regexValidationBox").className = "alert alert-dismissible alert-danger";
+					document.getElementById("regexformGroupDiv").className = "form-group has-error";
+					document.getElementById("regexValidationBox").innerHTML = "Invalid Value";
+				}
+				else
+				{
+					document.getElementById("regexValidationBox").className = "alert alert-dismissible alert-success";
+					document.getElementById("regexformGroupDiv").className = "form-group has-success";
+					document.getElementById("regexValidationBox").innerHTML = "Your input is valid";
+				}
+			} 
+			</script>
+			  </div>
+			   <div class="bs-component col-lg-3">
+				  <div id="regexValidationBox" class="alert alert-dismissible alert-danger">
+					Min 3 chars
+				  </div>
+			   </div>
+			  </div>
+		</div>
+	</div>
+<!-- start footer -->   
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="list-unstyled">
+              <li class="pull-right"><a href="#top">Back to top</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </footer>
+
+
+    </div>
+</body>
+</html>
