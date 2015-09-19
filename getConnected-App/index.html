@@ -100,23 +100,23 @@
 						<fieldset>
 						
 					  <div class="form-group">
-						<label for="fullname" class="col-lg-2 control-label">Full Name</label>
+						<label for="fullname" class="col-lg-2 control-label">Name</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" name="fullname" placeholder="Please enter you full name" required>
+						  <input type="text" class="form-control" name="fullname" data-parsley-pattern="/^[A-Za-z0-9 ]{3,25}$/" placeholder="Alphabets, numbers and space(' ') no special characters min 3 and max 25 characters" data-parsley-required="true">
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
 						<label for="username" class="col-lg-2 control-label">Username</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" name="username" data-parsley-pattern="/^[A-Za-z0-9 ]{3,20}$/" placeholder="Alphabets, numbers and space(' ') no special characters min 3 and max 20 characters" required>
+						  <input type="text" class="form-control" name="username" data-parsley-pattern="/^[a-z0-9_-]{3,16}$/" placeholder="Alphabets, numbers, underscore and hyphen min 3 and max 16 characters" data-parsley-required="true">
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
 						<label for="password" class="col-lg-2 control-label">Password</label>
 						<div class="col-lg-8">
-						  <input type="password" class="form-control" name="password1" placeholder="This field is required" parsley-required="true">
+						  <input type="password" class="form-control" name="password1" placeholder="This field is required" data-parsley-required="true">
 						</div>
 					  </div>
 					  
@@ -124,14 +124,14 @@
 						<label for="passwordConfirm" class="col-lg-2 control-label">Confirm Password</label>
 						<div class="col-lg-8">
 						  <input type="password" class="form-control" name="passwordConfirm" placeholder="This value must match the 'Password' field" 
-						   data-parsley-equalto="#password1" parsley-required="true">
+						   data-parsley-equalto="#password1" data-parsley-required="true">
 						</div>
 					  </div>
 					  
 					   <div class="form-group">
 						<label for="birthdate" class="col-lg-2 control-label">Birthdate</label>
 						<div class="col-lg-8">
-						  <input type="date" class="form-control" name="birthdate" placeholder="dd.MM.yyyy" required>
+						  <input type="text" class="form-control" name="birthdate" data-parsley-pattern="(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d" placeholder="dd.MM.yyyy" data-parsley-required="true">
 						</div>
 					  </div>
 					  
@@ -141,7 +141,7 @@
 						  <div class="col-lg-8">
 						<div class="radio">
 							<label>
-							  <input type="radio" name="gender" id="genderM" value="M" required>
+							  <input type="radio" name="gender" id="genderM" value="M" data-parsley-required="true">
 							  M
 							</label>
 						  </div>
@@ -158,14 +158,14 @@
 					  <div class="form-group">
 						<label for="country" class="col-lg-2 control-label">Country</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" name="country" placeholder="This field is required" required>
+						  <input type="text" class="form-control" name="country" placeholder="Ex: Germany" data-parsley-required="true">
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
-						<label for="rescue" class="col-lg-2 control-label">Rescue Email</label>
+						<label for="rescue" class="col-lg-2 control-label">Email</label>
 						<div class="col-lg-8">
-						  <input type="email" class="form-control" name="rescue" placeholder="A valid email address" required>
+						  <input type="email" class="form-control" name="rescue" placeholder="A valid email address" data-parsley-required="true">
 						</div>
 					  </div>
 					  
@@ -173,7 +173,7 @@
 						<label for="cvArea" class="col-lg-2 control-label">C.V</label>
 						<div class="col-lg-8">
 						   <input style="padding-left:14px;" type="file" onchange="readCV(this);" accept=".txt"/></br>
-						  <textarea rows="4" class="form-control col-lg-6" id="cvArea" name="cvArea" placeholder="This field is required" required> </textarea>
+						  <textarea rows="4" class="form-control col-lg-6" id="cvArea" name="cvArea" placeholder="This field is required" data-parsley-required="true"> </textarea>
 							<script>
 							function readCV(input) {
 								if (input.files && input.files[0]) {
@@ -193,9 +193,9 @@
 					  
 					  <div class="form-group">
 						<label for="rescue" class="col-lg-2 control-label">Picture</label>
-						<div>
-						  <img id="profilePic" style="width:250px; height:250px;" class="img-responsive col-lg-4" src="img/profile.png" alt="">
+						<div class="col-lg-8">
 						  <input style="padding-left:14px;" type="file" onchange="readURL(this);" accept=".jpg"/>
+						  <img id="profilePic" style="width:250px; height:250px;" class="img-responsive col-lg-6" src="img/profile.png" alt="">
 						  <script>
 							function readURL(input) {
 								if (input.files && input.files[0]) {
@@ -244,14 +244,14 @@
 					  </br></br></br></br>
 						<label for="username" class="col-lg-2 control-label">Username</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" name="username" placeholder="This field is required" required>
+						  <input type="text" class="form-control" name="username" placeholder="This field is required" data-parsley-required="true">
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
 						<label for="password" class="col-lg-2 control-label">Password</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" name="password" placeholder="This field is required" required>
+						  <input type="text" class="form-control" name="password" placeholder="This field is required" data-parsley-required="true">
 						</div>
 					  </div>
 					 
