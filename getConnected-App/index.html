@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 
     <meta charset="utf-8">
@@ -20,7 +18,39 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+	
+	<style>
+	input.parsley-success,
+	select.parsley-success,
+	textarea.parsley-success {
+		color: #468847;
+		background-color: #F2F9F0 !important;
+		border: 1px solid #D6E9C6;
+	}
 
+	input.parsley-error,
+	select.parsley-error,
+	textarea.parsley-error {
+		color: #B94A48;
+		background-color: #F9F0F0 !important;
+		border: 1px solid #f09784;
+	}
+
+	.parsley-errors-list {
+		list-style-type: none;
+		opacity: 0;
+		transition: all .3s ease-in;
+
+		color: #d16e6c;
+		margin-top: 5px;
+		margin-bottom: 0;
+	  padding-left: 0;
+	}
+
+	.parsley-errors-list.filled {
+		opacity: 1;
+	}
+	</style>
 </head>
 
 <body>
@@ -96,34 +126,34 @@
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Register new user:</h2>
                      <div class="well bs-component">
-					<form id="demo-form" class="form-horizontal" data-parsley-validate>
+					<form id="form-register" name="form-register" class="form-horizontal">
 						<fieldset>
 						
 					  <div class="form-group">
 						<label for="fullname" class="col-lg-2 control-label">Name</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" name="fullname" data-parsley-pattern="/^[A-Za-z0-9 ]{3,25}$/" placeholder="Alphabets, numbers and space(' ') no special characters min 3 and max 25 characters" data-parsley-required="true">
+						  <input type="text" class="form-control" name="fullname" data-parsley-trigger="change" data-parsley-pattern="/^[A-Za-z0-9 ]{3,25}$/" placeholder="Alphabets, numbers and space(' ') no special characters min 3 and max 25 characters" data-parsley-required="true">
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
-						<label for="username" class="col-lg-2 control-label">Username</label>
+						<label for="newusername" class="col-lg-2 control-label">Username</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" name="username" data-parsley-pattern="/^[a-z0-9_-]{3,16}$/" placeholder="Alphabets, numbers, underscore and hyphen min 3 and max 16 characters" data-parsley-required="true">
+						  <input type="text" class="form-control" id="newusername" name="newusername" data-parsley-trigger="change" data-parsley-pattern="/^[a-z0-9_-]{3,16}$/" placeholder="Alphabets, numbers, underscore and hyphen min 3 and max 16 characters" data-parsley-userexist="true" data-parsley-required="true">
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
 						<label for="password" class="col-lg-2 control-label">Password</label>
 						<div class="col-lg-8">
-						  <input type="password" class="form-control" name="password1" placeholder="This field is required" data-parsley-required="true">
+						  <input type="password" class="form-control" id="password1" name="password1" data-parsley-trigger="change" placeholder="This field is required" data-parsley-required="true">
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
 						<label for="passwordConfirm" class="col-lg-2 control-label">Confirm Password</label>
 						<div class="col-lg-8">
-						  <input type="password" class="form-control" name="passwordConfirm" placeholder="This value must match the 'Password' field" 
+						  <input type="password" class="form-control" name="passwordConfirm" data-parsley-trigger="change" placeholder="This value must match the 'Password' field" 
 						   data-parsley-equalto="#password1" data-parsley-required="true">
 						</div>
 					  </div>
@@ -131,7 +161,7 @@
 					   <div class="form-group">
 						<label for="birthdate" class="col-lg-2 control-label">Birthdate</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" name="birthdate" data-parsley-pattern="(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d" placeholder="dd.MM.yyyy" data-parsley-required="true">
+						  <input type="text" class="form-control" name="birthdate" data-parsley-trigger="change" data-parsley-pattern="(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d" placeholder="dd.MM.yyyy" data-parsley-required="true">
 						</div>
 					  </div>
 					  
@@ -141,7 +171,7 @@
 						  <div class="col-lg-8">
 						<div class="radio">
 							<label>
-							  <input type="radio" name="gender" id="genderM" value="M" data-parsley-required="true">
+							  <input type="radio" name="gender" id="genderM" value="M" data-parsley-trigger="change" data-parsley-required="true">
 							  M
 							</label>
 						  </div>
@@ -158,14 +188,14 @@
 					  <div class="form-group">
 						<label for="country" class="col-lg-2 control-label">Country</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" name="country" placeholder="Ex: Germany" data-parsley-required="true">
+						  <input type="text" class="form-control" name="country" data-parsley-trigger="change" placeholder="Ex: Germany" data-parsley-required="true">
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
 						<label for="rescue" class="col-lg-2 control-label">Email</label>
 						<div class="col-lg-8">
-						  <input type="email" class="form-control" name="rescue" placeholder="A valid email address" data-parsley-required="true">
+						  <input type="email" class="form-control" name="rescue" data-parsley-trigger="change" placeholder="A valid email address" data-parsley-required="true">
 						</div>
 					  </div>
 					  
@@ -173,7 +203,7 @@
 						<label for="cvArea" class="col-lg-2 control-label">C.V</label>
 						<div class="col-lg-8">
 						   <input style="padding-left:14px;" type="file" onchange="readCV(this);" accept=".txt"/></br>
-						  <textarea rows="4" class="form-control col-lg-6" id="cvArea" name="cvArea" placeholder="This field is required" data-parsley-required="true"> </textarea>
+						  <textarea rows="4" class="form-control col-lg-6" id="cvArea" name="cvArea" placeholder="Browse / Upload you C.V file in '.txt' format" data-parsley-trigger="change"> </textarea>
 							<script>
 							function readCV(input) {
 								if (input.files && input.files[0]) {
@@ -237,7 +267,7 @@
 					<div class="clearfix"></div>
 					<h2 class="section-heading">Welcome Back,</br>Log In</h2>
 					 <div class="well bs-component">
-					<form id="demo-form" class="form-horizontal" data-parsley-validate>
+					<form id="form-login" class="form-horizontal" data-parsley-validate>
 						<fieldset>
 					 
 					  <div class="form-group">
@@ -306,6 +336,57 @@
 	<!-- Parsley.js -->
     <script src="js/parsley.js"></script>
 
+	 <script>
+	$(document).ready(function() {
+		var currentUsers="";
+		
+		//Load users file from desk
+		var fileLoader = new XMLHttpRequest();
+		fileLoader.open('GET', 'data/users.txt');
+		fileLoader.onreadystatechange = function() 
+		{
+			if(currentUsers == "" && fileLoader.responseText.length > 0)
+			{
+			   currentUsers = fileLoader.responseText.split("\n"); 
+			}
+		}
+		fileLoader.send();		
+		
+		//Add custom validator for existing username
+		window.ParsleyValidator.addValidator('userexist', function(value, requirement) {
+		 var inpObj = document.getElementById("newusername");
+			
+			for(var i=0; i<currentUsers.length; i++)
+			{
+				var tmpUser = currentUsers[i].split("=");
+				if(tmpUser[0] == inpObj.value)
+				{
+					return false;
+				}
+			}
+			
+		 return true;
+		}).addMessage('en', 'userexist', 'This username is in-use, choose different one');
+		
+		//Configure the form to use parsley
+        $("form[name=form-register]").parsley();
+
+		//Event listener when submitting the form to do custom validation behaviour
+        $("form[name=form-register]").on('submit', function(e) {
+            var f = $(this);
+            f.parsley().validate();
+
+            if (f.parsley().isValid()) {
+                alert('You are registered successfully, please log in to continue');
+            } else {
+                alert('Error, Please review the date you\'ve entered.');
+            }
+
+            e.preventDefault();
+        });
+		
+		});  
+    </script>
 </body>
 
 </html>
