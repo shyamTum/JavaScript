@@ -295,9 +295,7 @@
 					<div class="clearfix"></div>
 					<h2 class="section-heading">Welcome to GET Connected</br>Log In</h2>
 					 <div class="well bs-component">
-					  <div id="loginErrorBox" name="loginErrorBox" class="alert alert-dismissible alert-danger">
-						 
-						 </div>
+					  <div id="loginErrorBox" name="loginErrorBox" class="alert alert-dismissible alert-danger" style="visibility:hidden;"></div>
 					<form id="form-login" class="form-horizontal" data-parsley-validate>
 						<fieldset>
 					
@@ -443,7 +441,8 @@
 					return true;
 				}
 			}
-			
+		
+		document.getElementById("loginErrorBox").style.visibility = "visible";
 		 return false;
 		}).addMessage('en', 'loginuserexist', 'This username doesn\'t exist.');
 		
@@ -459,7 +458,8 @@
 					return true;
 				}
 			}
-			
+		
+		document.getElementById("loginErrorBox").style.visibility = "visible";
 		 return false;
 		}).addMessage('en', 'passwordcorrect', 'Wrong password.');
 		
