@@ -295,21 +295,27 @@
 					<div class="clearfix"></div>
 					<h2 class="section-heading">Welcome to GET Connected</br>Log In</h2>
 					 <div class="well bs-component">
+					  <div id="loginErrorBox" name="loginErrorBox" class="alert alert-dismissible alert-danger">
+						 
+						 </div>
 					<form id="form-login" class="form-horizontal" data-parsley-validate>
 						<fieldset>
-					 
+					
 					  <div class="form-group">
-					  </br></br></br></br>
-						<label for="username" class="col-lg-2 control-label">Username</label>
+						<label for="loginusername" class="col-lg-2 control-label">Username</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" name="username" placeholder="This field is required" data-parsley-required="true">
+						  <input type="text" class="form-control" id="loginusername" name="loginusername" data-parsley-errors-container="#loginErrorBox"
+						  data-parsley-loginuserexist="true"
+						  placeholder="Your username" data-parsley-required="true">
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
-						<label for="password" class="col-lg-2 control-label">Password</label>
+						<label for="loginpassword" class="col-lg-2 control-label">Password</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" name="password" placeholder="This field is required" data-parsley-required="true">
+						  <input type="password" class="form-control" id="loginpassword" name="loginpassword" data-parsley-errors-container="#loginErrorBox"
+						  data-parsley-passwordcorrect="true"
+						  placeholder="Your password" data-parsley-required="true">
 						</div>
 					  </div>
 					 
@@ -416,6 +422,58 @@
 				tmpLocation = tmpLocation.replace("#", ""); 
 				tmpLocation = tmpLocation + "#login";
 				window.location.assign(tmpLocation);
+            } else {
+                alert('Error, Please review the date you\'ve entered.');
+            }
+
+            e.preventDefault();
+        });
+		
+		//--------------------------------------------------------------
+		
+		//Add custom validator for LOGIN username
+		window.ParsleyValidator.addValidator('loginuserexist', function(value, requirement) {
+		 var inpObj = document.getElementById("loginusername");
+			
+			for(var i=0; i<currentUsers.length; i++)
+			{
+				var tmpUser = currentUsers[i].split("=");
+				if(tmpUser[0] == inpObj.value)
+				{
+					return true;
+				}
+			}
+			
+		 return false;
+		}).addMessage('en', 'loginuserexist', 'This username doesn\'t exist.');
+		
+		//Add custom validator for LOGIN password
+		window.ParsleyValidator.addValidator('passwordcorrect', function(value, requirement) {
+		 var inpObj = document.getElementById("loginpassword");
+			
+			for(var i=0; i<currentUsers.length; i++)
+			{
+				var tmpUser = currentUsers[i].split("=");
+				if(tmpUser[1] == inpObj.value)
+				{
+					return true;
+				}
+			}
+			
+		 return false;
+		}).addMessage('en', 'passwordcorrect', 'Wrong password.');
+		
+		//Configure the form to use parsley
+        $("form[name=form-login]").parsley();
+
+		//Event listener when submitting the form to do custom validation behaviour
+        $("form[name=form-login]").on('submit', function(e) {
+            var f = $(this);
+            f.parsley().validate();
+
+            if (f.parsley().isValid()) 
+			{
+				//TODO: Redirect to user profile page
             } else {
                 alert('Error, Please review the date you\'ve entered.');
             }
