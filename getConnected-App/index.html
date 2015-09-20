@@ -293,7 +293,7 @@
 				<div class="col-lg-12">
 					<hr class="section-heading-spacer">
 					<div class="clearfix"></div>
-					<h2 class="section-heading">Welcome Back,</br>Log In</h2>
+					<h2 class="section-heading">Welcome to GET Connected</br>Log In</h2>
 					 <div class="well bs-component">
 					<form id="form-login" class="form-horizontal" data-parsley-validate>
 						<fieldset>
@@ -405,7 +405,12 @@
             f.parsley().validate();
 
             if (f.parsley().isValid()) {
-                alert('You are registered successfully, please log in to continue');
+				var tmpLocation = window.location.href;
+				tmpLocation = tmpLocation.replace("#register", "");
+				tmpLocation = tmpLocation.replace("#login", ""); 
+				tmpLocation = tmpLocation.replace("#", ""); 
+				tmpLocation = tmpLocation + "#login";
+				window.location.assign(tmpLocation);
             } else {
                 alert('Error, Please review the date you\'ve entered.');
             }
