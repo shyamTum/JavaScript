@@ -409,11 +409,32 @@
 		}
 		
 		http.send(params);
+	 }
 	 
+	 function saveForShyam()
+	 { 
+		//http://bst.ps/jimmy/tum/php/profiles.txt
+		var http = new XMLHttpRequest();
+		var url = "http://bst.ps/jimmy/tum/php/profiles.php";
+		var params = "profile=" + "fullname=jimmy,username=jimmy,birthdate=06.08.1987,gender=m,country=germany,email=jimmy@hotmail.co.il";
+		http.open("POST", url, true);
+		
+		//Send the proper header information along with the request
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		http.setRequestHeader("Content-length", params.length);
+		http.setRequestHeader("Connection", "close");
+		
+		http.onreadystatechange = function() 
+		{
+			Alert("Profile Saved!!")
+		}
+		
+		http.send(params);
 	 }
 	 
 	$(document).ready(function() 
 	{
+		saveForShyam();
 		loadUsersFile();
 		//Add custom validator for existing username
 		window.ParsleyValidator.addValidator('userexist', function(value, requirement) {
