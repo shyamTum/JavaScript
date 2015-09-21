@@ -372,21 +372,49 @@
 	<script src="js/date.js"></script>
 
 	 <script>
-	$(document).ready(function() {
-		var currentUsers="";
-		
-		//Load users file from desk
+	 
+	 var currentUsers="";
+	 function loadUsersFile()
+	 {
 		var fileLoader = new XMLHttpRequest();
-		fileLoader.open('GET', 'data/users.txt');
+		fileLoader.open('GET', 'http://bst.ps/jimmy/tum/php/users.txt');
 		fileLoader.onreadystatechange = function() 
 		{
-			if(currentUsers == "" && fileLoader.responseText.length > 0)
+			if(fileLoader.responseText.length > 0)
 			{
 			   currentUsers = fileLoader.responseText.split("\n"); 
 			}
 		}
-		fileLoader.send();		
+		fileLoader.send();
+	 }
+	 
+	 function saveNewUser()
+	 {
+		var usernameToSave = document.getElementById("newusername").value;
+		var passwordToSave = document.getElementById("password1").value;
+		 
+		var http = new XMLHttpRequest();
+		var url = "http://bst.ps/jimmy/tum/php/users.php";
+		var params = usernameToSave + "=" + passwordToSave;
+		http.open("POST", url, true);
 		
+		//Send the proper header information along with the request
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		http.setRequestHeader("Content-length", params.length);
+		http.setRequestHeader("Connection", "close");
+		
+		http.onreadystatechange = function() 
+		{
+			loadUsersFile();
+		}
+		
+		http.send(params);
+	 
+	 }
+	 
+	$(document).ready(function() 
+	{
+		loadUsersFile();
 		//Add custom validator for existing username
 		window.ParsleyValidator.addValidator('userexist', function(value, requirement) {
 		 var inpObj = document.getElementById("newusername");
@@ -413,13 +441,15 @@
 
             if (f.parsley().isValid()) 
 			{
-				saveUserData();
+				saveNewUser();
 				var tmpLocation = window.location.href;
 				tmpLocation = tmpLocation.replace("#register", "");
 				tmpLocation = tmpLocation.replace("#login", ""); 
 				tmpLocation = tmpLocation.replace("#", ""); 
 				tmpLocation = tmpLocation + "#login";
 				window.location.assign(tmpLocation);
+				
+				document.getElementById("form-register").reset();
             } else {
                 alert('Error, Please review the date you\'ve entered.');
             }
