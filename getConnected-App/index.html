@@ -233,20 +233,24 @@
 					   <div class="form-group">
 						<label for="cvArea" class="col-lg-2 control-label">C.V</label>
 						<div class="col-lg-8">
-						   <input style="padding-left:14px;" type="file" onchange="readCV(this);" accept=".txt"/></br>
-						  <textarea rows="4" class="form-control col-lg-6" id="cvArea" name="cvArea" placeholder="Browse / Upload you C.V file in '.txt' format" data-parsley-trigger="change"> </textarea>
+						   <input id="txtCVLink" name="txtCVLink" style="padding-left:14px;" type="text" class="form-control col-lg-8" onchange="readCV();" data-parsley-trigger="change" data-parsley-type="url" placeholder="Type a valid URL of your C.V"/></br>
+						  <textarea rows="4" class="form-control col-lg-8" id="cvArea" name="cvArea" placeholder="C.V file content" data-parsley-trigger="change" style="padding-top:3px;"> </textarea>
 							<script>
-							function readCV(input) {
-								if (input.files && input.files[0]) {
-									var reader = new FileReader();
-
-									reader.onload = function (e) {
-									
-										$('#cvArea').val(e.target.result);
-									};
-
-									reader.readAsText(input.files[0]);
-								}
+							function readCV()
+							{
+								if( $('#txtCVLink').parsley().isValid())
+								{
+									var fileLoader = new XMLHttpRequest();
+									fileLoader.open('GET', txtCVLink.value);
+									fileLoader.onreadystatechange = function() 
+									{
+										if(fileLoader.responseText.length > 0)
+										{
+										   $('#cvArea').val(fileLoader.responseText); 
+										}
+									}
+									fileLoader.send();
+								}	
 							}
 						  </script>
 						</div>
@@ -255,21 +259,12 @@
 					  <div class="form-group">
 						<label for="rescue" class="col-lg-2 control-label">Picture</label>
 						<div class="col-lg-8">
-						  <input style="padding-left:14px;" type="file" onchange="readURL(this);" accept=".jpg"/>
-						  <img id="profilePic" style="width:250px; height:250px;" class="img-responsive col-lg-6" src="img/profile.png" alt="">
+						  <input id="txtPicUrl" style="padding-left:14px;" type="text" class="form-control col-lg-8" onchange="readURL();" data-parsley-trigger="change" data-parsley-type="url" placeholder="Type a valid URL of your profile picture"/>
+						  <img id="profilePic" style="width:250px; height:250px; padding-left:0px; padding-top:3px;" class="img-responsive col-lg-8" src="img/profile.png" alt="">
 						  <script>
-							function readURL(input) {
-								if (input.files && input.files[0]) {
-									var reader = new FileReader();
-
-									reader.onload = function (e) {
-										$('#profilePic')
-											.attr('src', e.target.result)
-											.width(250).height(250);
-									};
-
-									reader.readAsDataURL(input.files[0]);
-								}
+							function readURL() 
+							{
+								$('#profilePic').attr('src', txtPicUrl.value)
 							}
 						  </script>
 						</div>
