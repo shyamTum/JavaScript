@@ -19,6 +19,10 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
+	<style type = "text/css">
+	.col-lg-8 {margin-bottom: 20px;}
+	</style>
+	
 </head>
 
 <body>
@@ -52,16 +56,76 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">User Profile</h2>
-                     <div class="well bs-component">
-						User Profile should be here
-					 </div>
+                     <div class="form-group">
+						<div class="col-lg-8">Name
+						  <input type="text" class="form-control" id="fullname" name="fullname" >
+						  </div>
+					  </div>
+						
+						<div class="form-group">
+						<div class="col-lg-8">Username
+						  <input type="text" class="form-control" id="username" name="username">
+						</div>
+						</div>
+					  
+					  
+					  					  
+					  <div class="form-group">
+						<div class="col-lg-8">Birthdate
+						  <input type="text" class="form-control" id="birthdate" name="birthdate">
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<div class="col-lg-8">Country
+						  <input type="text" class="form-control" id="country" name="country">
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<div class="col-lg-8">Gender
+						  <input type="text" class="form-control" id="gender" name="gender">
+						</div>
+					  </div>
+					  
+					   <div class="form-group">
+						<div class="col-lg-8">Email
+						  <input type="email" class="form-control" id="email" name="email">
+						</div>
+					  </div>
+
+					  <div class="form-group">
+					  <div class="col-lg-8">CV
+					 
+					    <textarea rows="10" class="form-control col-lg-6" id="cvArea" name="cvArea" > </textarea>
+					  </div>
+					  </div>
+					  
                 </div>
             </div>
         </div>
         <!-- /.container -->
 
     </div>
-
+	
+	
+	
+	<script src="js/newprofile.js">
+	</script>
+	<script>
+     //console.log("hi");
+	 validLogin ();
+	 //document.getElementById("cvArea").value=cvLoader();
+	 /*console.log(uservariable);
+	 
+	 document.getElementById("fullname").value= fullName;
+	 document.getElementById("username").value= userName;
+	 document.getElementById("birthdate").value= birthDate;
+	 document.getElementById("country").value= counTry;
+	 document.getElementById("gender").value= genDer;
+	 document.getElementById("email").value= emaiL;
+	 console.log(userName);*/
+</script>
 </body>
 
 </html>

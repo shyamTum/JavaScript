@@ -135,30 +135,55 @@
 					  <div class="form-group">
 						<label for="fullname" class="col-lg-2 control-label">Name</label>
 						<div class="col-lg-8">
+						
+							<!-- This field uses: 
+							- "data-parsley-pattern" which takes custom RegEx 
+							- "data-parsley-required" to make the field required
+							- "data-parsley-trigger" to trigger validation on text change
+							- "data-parsley-error-message" for custom error message -->
 						  <input type="text" class="form-control" id="fullname" name="fullname" data-parsley-trigger="change" data-parsley-pattern="/^[A-Za-z0-9 ]{3,25}$/" placeholder="Alphabets, numbers and space(' ') no special characters min 3 and max 25 characters" data-parsley-required="true"
 						  data-parsley-error-message="Your name is required and cannot have danger characters with length between 3 - 25">
+						
+						
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
 						<label for="newusername" class="col-lg-2 control-label">Username</label>
 						<div class="col-lg-8">
-						  <input type="text" class="form-control" id="newusername" name="newusername" data-parsley-trigger="change" data-parsley-pattern="/^[a-z0-9_-]{3,16}$/" placeholder="Alphabets, numbers, underscore and hyphen min 3 and max 16 characters" data-parsley-userexist="true" data-parsley-required="true">
+						
+						<!-- The special in this field is that it uses multiple validation rules + a CUSTOM validation rule 
+						- The first validation rule will be applied is the "required" and then the "RegEx" and after that
+						- The third validation rule is "data-parsley-userexist", the (userexist) is a custom rule defined in
+						the JS code at the end.
+						-->
+						  <input type="text" class="form-control" id="newusername" name="newusername" data-parsley-trigger="change" data-parsley-pattern="/^[a-z0-9_-]{3,16}$/" placeholder="Alphabets, numbers, underscore and hyphen min 3 and max 16 characters" data-parsley-userexist data-parsley-required="true">
+						  
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
 						<label for="password" class="col-lg-2 control-label">Password</label>
 						<div class="col-lg-8">
+						
+						<!-- The special about this field is that it uses the validation rule (data-parsley-minlength="6") this rule is pre-defined to specify the 
+						 minimum value allowed-->
 						  <input type="password" class="form-control" id="password1" name="password1" data-parsley-trigger="change" placeholder="Required and more than 6 chars" data-parsley-required="true" data-parsley-minlength="6" data-parsley-error-message="Required and minimum of 6 characters">
+						  
+						  
 						</div>
 					  </div>
 					  
 					  <div class="form-group">
 						<label for="passwordConfirm" class="col-lg-2 control-label">Confirm Password</label>
 						<div class="col-lg-8">
+						
+						<!-- The special about this field is that it uses the validation rule (data-parsley-equalto) this rule is pre-defined to specify a control 
+						that this field must have an equal value to-->
 						  <input type="password" class="form-control" name="passwordConfirm" data-parsley-trigger="change" placeholder="This value must match the 'Password' field" data-parsley-error-message="This value must exactly match the 'Password' field"
 						   data-parsley-equalto="#password1" data-parsley-required="true">
+						   
+						   
 						</div>
 					  </div>
 					  
@@ -174,6 +199,9 @@
 						<label for="gender" class="col-lg-2 control-label">Gender</label>
 						<div class="col-lg-8">
 						  <div class="col-lg-8">
+						  
+						  <!-- The special about this field is that it uses the required rule for all the fields with the same name-->
+						  
 						<div class="radio">
 							<label>
 							  <input type="radio" name="gender" id="genderM" value="M" data-parsley-trigger="change" data-parsley-required="true">
@@ -200,12 +228,18 @@
 					  <div class="form-group">
 						<label for="rescue" class="col-lg-2 control-label">Email</label>
 						<div class="col-lg-8">
+						
+						 <!-- The special about this field is that it uses the "data-parsley-type="email"" rule-->
+						
 						  <input data-parsley-type="email" class="form-control" id="email" name="email" data-parsley-trigger="change" placeholder="A valid email address" data-parsley-required="true">
 						</div>
 					  </div>
 					  
 					   <div class="form-group">
 						 <label for="optionalBoxes" class="col-lg-2 control-label">Languages(Optional, minimum2):</label>
+						 
+						  <!-- The special about this field is that it uses the "data-parsley-mincheck=2" rule for all the fields with the same name-->
+						 
 						 <div class="col-lg-8">
 						   <div class="checkbox">
 							<label>
@@ -233,8 +267,12 @@
 					   <div class="form-group">
 						<label for="cvArea" class="col-lg-2 control-label">C.V</label>
 						<div class="col-lg-8">
+						
+						<!-- The special about this field is that it uses the (data-parsley-type="url") rule-->
+						
 						   <input id="txtCVLink" name="txtCVLink" style="padding-left:14px;" type="text" class="form-control col-lg-8" onchange="readCV();" data-parsley-trigger="change" data-parsley-type="url" placeholder="Type a valid URL of your C.V"/></br>
-						  <textarea rows="4" class="form-control col-lg-8" id="cvArea" name="cvArea" placeholder="C.V file content" data-parsley-trigger="change" style="padding-top:3px;"> </textarea>
+						 
+						 <textarea rows="4" class="form-control col-lg-8" id="cvArea" name="cvArea" placeholder="C.V file content" data-parsley-trigger="change" style="padding-top:3px;"> </textarea>
 							<script>
 							function readCV()
 							{
@@ -264,7 +302,11 @@
 						  <script>
 							function readURL() 
 							{
-								$('#profilePic').attr('src', txtPicUrl.value)
+								if( $('#txtPicUrl').parsley().isValid() && txtPicUrl.value.length > 0)
+								{
+									$('#profilePic').attr('src', txtPicUrl.value)
+								}
+								
 							}
 						  </script>
 						</div>
@@ -293,16 +335,27 @@
 					<div class="clearfix"></div>
 					<h2 class="section-heading">Welcome to GET Connected</br>Log In</h2>
 					 <div class="well bs-component">
+					 
+					 <!-- This is a box for showing error messages-->
 					  <div id="loginErrorBox" name="loginErrorBox" class="alert alert-dismissible alert-danger" style="visibility:hidden;"></div>
+					  
+					  
 					<form id="form-login" name="form-login" class="form-horizontal" data-parsley-validate>
 						<fieldset>
 					
 					  <div class="form-group">
 						<label for="loginusername" class="col-lg-2 control-label">Username</label>
 						<div class="col-lg-8">
+						
+						<!-- The special about this field is that it uses custom error container to display errors
+						- (data-parsley-errors-container) 
+						- (data-parsley-loginuserexist): custom error defined in the JS code at the end of the page
+						-->
 						  <input type="text" class="form-control" id="loginusername" name="loginusername" data-parsley-errors-container="#loginErrorBox"
-						  data-parsley-loginuserexist="true" data-parsley-trigger="change" 
+						  data-parsley-loginuserexist data-parsley-trigger="change" 
 						  placeholder="Your username" data-parsley-required="true">
+						  
+						  
 						</div>
 					  </div>
 					  
@@ -310,7 +363,7 @@
 						<label for="loginpassword" class="col-lg-2 control-label">Password</label>
 						<div class="col-lg-8">
 						  <input type="password" class="form-control" id="loginpassword" name="loginpassword" data-parsley-errors-container="#loginErrorBox"
-						  data-parsley-passwordcorrect="true" data-parsley-trigger="change" 
+						  data-parsley-passwordcorrect data-parsley-trigger="change" 
 						  placeholder="Your password" data-parsley-required="true">
 						</div>
 					  </div>
@@ -372,7 +425,13 @@
 
 	 <script>
 	 
+	 //Variable that will contain an array of the currently available users in the system
 	 var currentUsers="";
+	 
+	 /**
+	 *A function to load the saved users from our server 
+	 *This function will split the users and store them in global array
+	 **/
 	 function loadUsersFile()
 	 {
 		var fileLoader = new XMLHttpRequest();
@@ -387,6 +446,9 @@
 		fileLoader.send();
 	 }
 	 
+	 /**
+	 *A function to save new registered username / password
+	 **/
 	 function saveNewUser()
 	 {
 		var usernameToSave = document.getElementById("newusername").value;
@@ -407,10 +469,17 @@
 		http.send(params);
 	 }
 	 
+	 /**
+	 * On document ready we need to do add some event listeners and add some custom functions / rules
+	 **/
 	$(document).ready(function() 
 	{
+		//Lets load the users list to keep them ready when we need them for registration and login
 		loadUsersFile();
+		
+		
 		//Add custom validator for existing username
+		//This validator will loop through the list of users and check if the new user is already exists
 		window.ParsleyValidator.addValidator('userexist', function(value, requirement) {
 		 var inpObj = document.getElementById("newusername");
 			
@@ -430,29 +499,35 @@
 		//Configure the form to use parsley
         $("form[name=form-register]").parsley();
 
-		//Event listener when submitting the form to do custom validation behaviour
+		//Event listener when submitting the form to do custom validation logic
         $("form[name=form-register]").on('submit', function(e) {
             var f = $(this);
+			
+			//Lets validate the form
             f.parsley().validate();
 
             if (f.parsley().isValid()) 
 			{
+				//Then the form is valid, lets save the user profile
 				saveNewUser();
 				saveForShyam();
-		
+				
+				//Redirect the user to the login form
 				var tmpLocation = "http://bst.ps/jimmy/tum/index.html#login";
 				window.location.assign(tmpLocation);
 				
+				//Reset the registration form fields
 				document.getElementById("form-register").reset();
             } else {
-                alert('Error, Please review the date you\'ve entered.');
+                alert('Error, Something wrong happened');
             }
-
+			
+			//Prevent the default behaviour because we have our own logic
             e.preventDefault();
         });
 		
 		//--------------------------------------------------------------
-		
+		//LOGIN FORM
 		//Add custom validator for LOGIN username
 		window.ParsleyValidator.addValidator('loginuserexist', function(value, requirement) {
 		 var inpObj = document.getElementById("loginusername");
@@ -498,7 +573,8 @@
 
             if (f.parsley().isValid()) 
 			{
-				var tmpLocation = "http://bst.ps/jimmy/tum/page2.html?username=" + document.getElementById("loginusername").value; 
+			    //Redirect the user and specify the username as parameter
+				var tmpLocation = "http://bst.ps/jimmy/tum/shyam.html?username=" + document.getElementById("loginusername").value; 
 				window.location.assign(tmpLocation);
             } else {
                 alert('Error, Please review the date you\'ve entered.');
