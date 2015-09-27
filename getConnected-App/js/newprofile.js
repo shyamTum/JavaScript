@@ -8,7 +8,7 @@
      var urlAfterLogin;
 	
 
-	 function saveForShyam()
+	 function saveProfileData()
 
 	 { 
 
