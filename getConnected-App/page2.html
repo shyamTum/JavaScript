@@ -75,9 +75,10 @@
 
 	<script>
 	$(document).ready(function()
-	{
+	{alert("test");
 	  var GET = {};
 	  var query= window.location.search.substring(1).split("&");
+	  alert(query);
 	  for (var i = 0, max = query.length; i < max; i++)
 		{
 			if (query[i] === "") // check for trailing & with no param

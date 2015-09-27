@@ -21,6 +21,8 @@
 
 	<style type = "text/css">
 	.col-lg-8 {margin-bottom: 20px;}
+	.col-lg-9 {margin-bottom: 30px;}
+	.form-horizontal {margin-bottom: 30px}
 	</style>
 	
 </head>
@@ -101,6 +103,86 @@
 					  </div>
 					  </div>
 					  
+					  <div class="form-group">
+						<label for="rescue" class="col-lg-2 control-label">Picture</label>
+						<div class="col-lg-8">
+						  <img id="profilePic" style="width:250px; height:250px; padding-left:0px; padding-top:3px;" class="img-responsive col-lg-8" alt="">
+						  
+						</div>
+					  </div>
+				
+				
+					  <div class="form-group">
+						<div class="col-lg-9"><h3>Loading Local File</h3>
+						  <input type="file" id="fileinput" />
+                          <textarea rows="5" class="form-control col-lg-6" id="fileArea" name="cvArea" > </textarea>
+                             <script type="text/javascript">
+                                     function readSingleFile(evt) {
+                                     var f = evt.target.files[0]; 
+		
+
+                                         if (f) {
+                                         var r = new FileReader();
+                                         r.onload = function(e) { 
+	                                     var contents = e.target.result;
+										 
+										document.getElementById("fileArea").value = "name: "+f.name+"\n"+"type:"+f.type+"\n"+"size"+f.size;
+                                                                 }     
+                                             r.readAsText(f);
+                                              }  
+											 else { 
+                                               alert("Failed to load file");
+                                                  }
+                                    }
+
+                        document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+                        </script>
+						</div>
+						</div>
+						
+						<div class="newform-group">
+						 <label for="optionalBoxes" class="col-lg-2 control-label"></label>
+						 
+						  <div class="col-lg-8">
+						   <h3> Filter Options</h3>
+						  <div class="checkbox">
+							<label>
+							  <input type="text" id="entersex" name="entersex" placeholder="M or F" /> Sex
+							</label>
+						  </div>
+						  <div class="checkbox">
+						  	<label>
+							   <input type="text" id="entercountry" name="entercountry"  /> Country
+						 	</label>
+						   </div>
+						   
+						   <div class="form-group">
+						  	<label>
+							   <button type="submit" id="enterbutton" name="enterbutton" onclick="filterCountry()" value = "submit"/>
+						 	</label>
+						   </div>
+						   <script>
+						   
+							</script>
+	             </div>
+				 </div>
+				       
+					   <div class="newform-group">
+					  <div class="col-lg-8">Matched Users
+					 
+					    <textarea rows="5" class="form-control col-lg-6" id="matchedUser" name="matchedUser" > </textarea>
+					  </div>
+					  </div>
+					  
+					  <div class="form-group">
+					  <div class="col-lg-8">Combined Data for Matched Users
+					 
+					    <textarea rows="10" class="form-control col-lg-6" id="dataUser" name="dataUser" > </textarea>
+					  </div>
+					  </div>
+					  
+				 </div>
+		 
                 </div>
             </div>
         </div>
@@ -110,8 +192,12 @@
 	
 	
 	
-	<script src="js/newprofile.js">
-	</script>
+				 
+				 
+	<script src="js/newprofile.js"></script>
+	<script src="js/date.js"></script>
+	<script src="js/moment.js"></script>
+	<script src="js/underscore.js"></script>
 	<script>
      //console.log("hi");
 	 validLogin ();
