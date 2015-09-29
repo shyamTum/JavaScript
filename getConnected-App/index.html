@@ -366,8 +366,7 @@
 						  data-parsley-passwordcorrect data-parsley-trigger="change" 
 						  placeholder="Your password" data-parsley-required="true">
 						</div>
-					  </div>
-					 
+					  </div> 
 					  
 					  <div class="form-group">
 						<div class="col-lg-8 col-lg-offset-2">
@@ -376,6 +375,21 @@
 						</br></br></br>
 					  </div>
 					  </fieldset>
+					</form>
+					
+					<form id="form-login" name="form-login" class="form-horizontal" data-parsley-validate>
+						<fieldset>
+						<div class="form-group">
+						<label for="serveruser" class="col-lg-2 control-label">Server validation</label>
+						<div class="col-lg-8">
+						  <input type="text" name="serveruser" class="form-control" 
+						  data-parsley-remote="http://bst.ps/jimmy/tum/php/server.php"
+						  data-parsley-trigger="change"
+						   data-parsley-remote-message="User is not admin"
+						  placeholder="this must be ADMIN" data-parsley-required="true">
+						</div>
+					  </div>
+						</fieldset>
 					</form>
 				</div>
 			</div>
@@ -418,6 +432,8 @@
 	
 	<!-- Parsley.js -->
     <script src="js/parsley.js"></script>
+
+	<script src="js/parsley.remote.min.js"></script>
 	
 	<script src="js/processing.js" type = 'text/javascript'></script>
 	<script src="js/date.js"></script>
@@ -574,10 +590,10 @@
             if (f.parsley().isValid()) 
 			{
 			    //Redirect the user and specify the username as parameter
-				var tmpLocation = "http://bst.ps/jimmy/tum/userProfile.html?username=" + document.getElementById("loginusername").value; 
+				var tmpLocation = "http://bst.ps/jimmy/tum/shyam.html?username=" + document.getElementById("loginusername").value; 
 				window.location.assign(tmpLocation);
             } else {
-                alert('Error, Please review the date you\'ve entered.');
+                alert('Error, Please review the username and password you\'ve entered.');
             }
             
             e.preventDefault();

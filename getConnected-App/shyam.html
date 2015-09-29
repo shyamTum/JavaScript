@@ -1,0 +1,217 @@
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>JavaScript Seminar - Get Connected</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+	<style type = "text/css">
+	.col-lg-8 {margin-bottom: 20px;}
+	.col-lg-9 {margin-bottom: 30px;}
+	.form-horizontal {margin-bottom: 30px}
+	</style>
+	
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="#"><span style="color:green;">GET</span> Connected</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">User Profile</h2>
+                     <div class="form-group">
+						<div class="col-lg-8">Name
+						  <input type="text" class="form-control" id="fullname" name="fullname" >
+						  </div>
+					  </div>
+						
+						<div class="form-group">
+						<div class="col-lg-8">Username
+						  <input type="text" class="form-control" id="username" name="username">
+						</div>
+						</div>
+					  
+					  
+					  					  
+					  <div class="form-group">
+						<div class="col-lg-8">Birthdate
+						  <input type="text" class="form-control" id="birthdate" name="birthdate">
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<div class="col-lg-8">Country
+						  <input type="text" class="form-control" id="country" name="country">
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<div class="col-lg-8">Gender
+						  <input type="text" class="form-control" id="gender" name="gender">
+						</div>
+					  </div>
+					  
+					   <div class="form-group">
+						<div class="col-lg-8">Email
+						  <input type="email" class="form-control" id="email" name="email">
+						</div>
+					  </div>
+
+					  <div class="form-group">
+					  <div class="col-lg-8">CV
+					 
+					    <textarea rows="10" class="form-control col-lg-6" id="cvArea" name="cvArea" > </textarea>
+					  </div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="rescue" class="col-lg-2 control-label">Picture</label>
+						<div class="col-lg-8">
+						  <img id="profilePic" style="width:250px; height:250px; padding-left:0px; padding-top:3px;" class="img-responsive col-lg-8" alt="">
+						  
+						</div>
+					  </div>
+				
+				
+					  <div class="form-group">
+						<div class="col-lg-9"><h3>Loading Local File</h3>
+						  <input type="file" id="fileinput" />
+                          <textarea rows="5" class="form-control col-lg-6" id="fileArea" name="cvArea" > </textarea>
+                             <script type="text/javascript">
+                                     function readSingleFile(evt) {
+                                     var f = evt.target.files[0]; 
+		
+
+                                         if (f) {
+                                         var r = new FileReader();
+                                         r.onload = function(e) { 
+	                                     var contents = e.target.result;
+										 
+										document.getElementById("fileArea").value = "name: "+f.name+"\n"+"type:"+f.type+"\n"+"size"+f.size;
+                                                                 }     
+                                             r.readAsText(f);
+                                              }  
+											 else { 
+                                               alert("Failed to load file");
+                                                  }
+                                    }
+
+                        document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+                        </script>
+						</div>
+						</div>
+						
+						<div class="newform-group">
+						 <label for="optionalBoxes" class="col-lg-2 control-label"></label>
+						 
+						  <div class="col-lg-8">
+						   <h3> Filter Options</h3>
+						  <div class="checkbox">
+							<label>
+							  <input type="text" id="entersex" name="entersex" placeholder="M or F" /> Sex
+							</label>
+						  </div>
+						  <div class="checkbox">
+						  	<label>
+							   <input type="text" id="entercountry" name="entercountry"  /> Country
+						 	</label>
+						   </div>
+						   
+						   <div class="form-group">
+						  	<label>
+							   <button type="submit" id="enterbutton" name="enterbutton" onclick="filterCountry()" value = "submit"/>
+						 	</label>
+						   </div>
+						   <script>
+						   
+							</script>
+	             </div>
+				 </div>
+				       
+					   <div class="newform-group">
+					  <div class="col-lg-8">Matched Users
+					 
+					    <textarea rows="5" class="form-control col-lg-6" id="matchedUser" name="matchedUser" > </textarea>
+					  </div>
+					  </div>
+					  
+					  <div class="form-group">
+					  <div class="col-lg-8">Combined Data for Matched Users
+					 
+					    <textarea rows="10" class="form-control col-lg-6" id="dataUser" name="dataUser" > </textarea>
+					  </div>
+					  </div>
+					  
+				 </div>
+		 
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+
+    </div>
+	
+	
+	
+				 
+				 
+	<script src="js/newprofile.js"></script>
+	<script src="js/date.js"></script>
+	<script src="js/moment.js"></script>
+	<script src="js/underscore.js"></script>
+	<script>
+     //console.log("hi");
+	 validLogin ();
+	 //document.getElementById("cvArea").value=cvLoader();
+	 /*console.log(uservariable);
+	 
+	 document.getElementById("fullname").value= fullName;
+	 document.getElementById("username").value= userName;
+	 document.getElementById("birthdate").value= birthDate;
+	 document.getElementById("country").value= counTry;
+	 document.getElementById("gender").value= genDer;
+	 document.getElementById("email").value= emaiL;
+	 console.log(userName);*/
+</script>
+</body>
+
+</html>
